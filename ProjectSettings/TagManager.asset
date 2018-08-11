@@ -7,6 +7,7 @@ TagManager:
   - Item
   - PickupPoint
   - Recipes
+  - ItemSpawner
   layers:
   - Default
   - TransparentFX
