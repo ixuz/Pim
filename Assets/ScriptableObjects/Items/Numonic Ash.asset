@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Numonic Ash
   m_EditorClassIdentifier: 
   itemName: Numonic Ash
-  sprite: {fileID: 21300000, guid: 3ea67e2e6020f8d4c80d524ca178c796, type: 3}
+  sprite: {fileID: 21300000, guid: 4c7d3d573722c09429e545217e7a8f7c, type: 3}
   value: 0

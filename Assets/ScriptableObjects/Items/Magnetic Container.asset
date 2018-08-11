@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8be551b20592a8c49ac020d6d927c676, type: 3}
-  m_Name: Plasma Powder
+  m_Name: Magnetic Container
   m_EditorClassIdentifier: 
-  itemName: Plasma Powder
-  sprite: {fileID: 21300012, guid: bf43cf80a507b304aa3269353876233f, type: 3}
-  value: 6
+  itemName: Magnetic Container
+  sprite: {fileID: 21300028, guid: 876a9acfb8ca9114fbb228f0e59ac5e1, type: 3}
+  value: 14
