@@ -83,6 +83,7 @@ public class ItemSpawner : MonoBehaviour {
                 pickupPoint.AddItem(item);
 
                 item = null;
+                AudioManager.instance.PlaySfx("Blip_Select17");
                 break;
             } else {
                 if (item.transform.position.x >= pickupPoint.transform.position.x - 1) {

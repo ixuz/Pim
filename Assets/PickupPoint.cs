@@ -94,7 +94,7 @@ public class PickupPoint : MonoBehaviour {
             if (go.transform.position.x >= position.x) {
                 // The current Item have reached the first pickupPoint!
                 Debug.Log("Output sent!");
-                Item.TriggerItemReachedOutputEvent(item);
+                Item.TriggerItemReachedOutputEvent(item, item.itemType);
                 Destroy(go);
 
                 break;

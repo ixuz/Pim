@@ -10,7 +10,7 @@ public class Item : MonoBehaviour {
 
     // Event declaration
     public static event ItemReachedOutputEvent OnItemReachedOutputEvent;
-    public delegate void ItemReachedOutputEvent(Item item);
+    public delegate void ItemReachedOutputEvent(Item item, ItemType itemType);
 
     // Use this for initialization
     void Start () {
@@ -22,12 +22,27 @@ public class Item : MonoBehaviour {
 		
 	}
 
+    void OnEnable() {
+        OnItemReachedOutputEvent += ItemReachedOutput;
+    }
+
+    void OnDisable() {
+        OnItemReachedOutputEvent -= ItemReachedOutput;
+    }
+
     public void SetItemType(ItemType itemType) {
         this.itemType = itemType;
         spriteRenderer.sprite = itemType.sprite;
     }
 
-    public static void TriggerItemReachedOutputEvent(Item item) {
-        OnItemReachedOutputEvent(item);
+    public static void TriggerItemReachedOutputEvent(Item item, ItemType itemType) {
+        OnItemReachedOutputEvent(item, itemType);
+    }
+
+    public void ItemReachedOutput(Item item, ItemType itemType) {
+        if (item == this) {
+            Debug.Log("I ded!");
+            AudioManager.instance.PlaySfx("Blip_Select14");
+        }
     }
 }
