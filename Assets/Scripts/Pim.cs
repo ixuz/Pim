@@ -5,9 +5,15 @@ using System.Linq;
 
 public class Pim : MonoBehaviour {
 
+    public Animator animator;
     public Transform itemHolder;
+    public Item currentItem;
+
+    public float movementSmoothing = 1.0f;
 
     public float speed = 2f;
+
+    private Vector2 currentVelocity;
 
 	// Use this for initialization
 	void Start () {
@@ -19,16 +25,32 @@ public class Pim : MonoBehaviour {
 
         // Handle inputs
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        Vector2 velocity = input * speed;
+        Vector2 desiredVelocity = input * speed;
+
+        Vector2 actualVelocity = Vector2.Lerp(currentVelocity, desiredVelocity, 1/movementSmoothing * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) {
-            grabClosestItem();
+            //grabClosestItem();
+        
         }
+
 
         // Update position of player
         Vector2 position = transform.position;
-        position += velocity * Time.deltaTime;
+        position += actualVelocity * Time.deltaTime;
         transform.position = position;
+
+        currentVelocity = actualVelocity;
+
+        animator.SetFloat("velocity", currentVelocity.magnitude);
+        if (currentVelocity.x > 0) {
+            animator.SetBool("facing_right", true);
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (currentVelocity.x < 0) {
+            animator.SetBool("facing_right", false);
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     public void grabClosestItem() {
@@ -46,10 +68,6 @@ public class Pim : MonoBehaviour {
             Item closestItem = closestObject.GetComponent<Item>();
             Debug.Log("Distance to closest closestObject:" + GetDistanceToObject(closestObject));
         }
-
-        /*foreach (GameObject go in gos) {
-            Debug.Log("Distance to closest item:" + GetDistanceToObject(go));
-        }*/
     }
 
     float GetDistanceToObject(GameObject go) {
