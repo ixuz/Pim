@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5179025999411882906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6358712573195592072}
+  - component: {fileID: 8072250990520019852}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6358712573195592072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179025999411882906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05430934, y: 0.20403995, z: -0.076654784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8072250990520019852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179025999411882906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4b5f8e99f1c0f449cdfcdfdf26b72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 096e19c12c2338d48ad6e278b6ed5c7a, type: 2}
+  sounds:
+  - name: Blip_Select3
+    audioClip: {fileID: 8300000, guid: 14bafac7b4abf8a40b2dac313bb4bdc7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select4
+    audioClip: {fileID: 8300000, guid: e9d734c1a5ee0b04e88231e997f88541, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select5
+    audioClip: {fileID: 8300000, guid: 1547128b63f26244b904495387bda82a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select6
+    audioClip: {fileID: 8300000, guid: fa0b0575b03e3ea4d9bdff9acdd5165d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select7
+    audioClip: {fileID: 8300000, guid: 49429fa8c67c7f34cb3325a9f2d87957, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select8
+    audioClip: {fileID: 8300000, guid: 0e3ecd626aaadac46af0970e2ee2c7fa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select9
+    audioClip: {fileID: 8300000, guid: c2033dc322ad6d7499927cabc5ba8d83, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select10
+    audioClip: {fileID: 8300000, guid: 7628656f43fcb4040b9dab39c47ad0fc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: 
+    audioClip: {fileID: 8300000, guid: 9ee91ef3af6609f4ab1f451572952d89, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  initialBgm: 

@@ -58,17 +58,21 @@ public class Pim : MonoBehaviour {
                             if (pickupPoint.CanPickupHere()) {
                                 bool pickedUpItem = PickupItem(pickupPoint);
 
-                                if (!pickedUpItem) {
+                                if (pickedUpItem) {
+                                    AudioManager.instance.PlaySfx("Blip_Select5");
+                                } else if (!pickedUpItem) {
                                     if (pickupPoint.MergeItem(currentItem)) {
                                         Destroy(currentItem);
                                         currentItem = null;
                                         PickupItem(pickupPoint);
+                                        AudioManager.instance.PlaySfx("Blip_Select10");
                                     }
                                 }
                             }
                         } else {
                             if (pickupPoint.CanDropHere()) {
                                 DropItem(pickupPoint);
+                                AudioManager.instance.PlaySfx("Blip_Select7");
                             }
                         }
                     }
