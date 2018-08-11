@@ -55,9 +55,21 @@ public class Pim : MonoBehaviour {
 
                     if (standingOnPickupPoint) {
                         if (pickupPoint.GetItem() != null) {
-                            PickupItem(pickupPoint);
+                            if (pickupPoint.CanPickupHere()) {
+                                bool pickedUpItem = PickupItem(pickupPoint);
+
+                                if (!pickedUpItem) {
+                                    if (pickupPoint.MergeItem(currentItem)) {
+                                        Destroy(currentItem);
+                                        currentItem = null;
+                                        PickupItem(pickupPoint);
+                                    }
+                                }
+                            }
                         } else {
-                            DropItem(pickupPoint);
+                            if (pickupPoint.CanDropHere()) {
+                                DropItem(pickupPoint);
+                            }
                         }
                     }
                 }
