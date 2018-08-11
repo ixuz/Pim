@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Item : MonoBehaviour {
 
+    public SpriteRenderer spriteRenderer;
+
+    public ItemType itemType;
+
 	// Use this for initialization
 	void Start () {
-		
+        SetItemType(itemType);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void SetItemType(ItemType itemType) {
+        this.itemType = itemType;
+        spriteRenderer.sprite = itemType.sprite;
+    }
 }

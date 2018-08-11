@@ -6,6 +6,7 @@ using System.Linq;
 public class Pim : MonoBehaviour {
 
     public Animator animator;
+    public Rigidbody2D rb;
     public Transform itemHolder;
     public GameObject currentItem;
 
@@ -15,11 +16,6 @@ public class Pim : MonoBehaviour {
 
     private Vector2 currentVelocity;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
 
@@ -28,18 +24,12 @@ public class Pim : MonoBehaviour {
         Vector2 desiredVelocity = input * speed;
 
         Vector2 actualVelocity = Vector2.Lerp(currentVelocity, desiredVelocity, 1/movementSmoothing * Time.deltaTime);
+        rb.velocity = actualVelocity;
 
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) {
             Interact();
         }
-
-
-        // Update position of player
-        Vector2 position = transform.position;
-        position += actualVelocity * Time.deltaTime;
-        transform.position = position;
-
-        currentVelocity = actualVelocity;
+        currentVelocity = rb.velocity;
 
         animator.SetFloat("velocity", currentVelocity.magnitude);
         if (currentVelocity.x > 0) {
@@ -53,7 +43,6 @@ public class Pim : MonoBehaviour {
     }
 
     public void Interact() {
-        Debug.Log("Try to grab closest item");
         List<GameObject> pickupPoints = GameObject.FindGameObjectsWithTag("PickupPoint").ToList<GameObject>();
         pickupPoints = pickupPoints.OrderBy(x => GetDistanceToObject(x)).ToList();
 
@@ -65,12 +54,9 @@ public class Pim : MonoBehaviour {
                     bool standingOnPickupPoint = pickupPointCollider.OverlapPoint(transform.position);
 
                     if (standingOnPickupPoint) {
-                        Debug.Log("pickupPoint.GetItem(): " + pickupPoint.GetItem());
                         if (pickupPoint.GetItem() != null) {
-                            Debug.Log("I can try to pick this item up!");
                             PickupItem(pickupPoint);
                         } else {
-                            Debug.Log("I can try to drop an item here!");
                             DropItem(pickupPoint);
                         }
                     }
