@@ -8,8 +8,12 @@ public class Item : MonoBehaviour {
 
     public ItemType itemType;
 
-	// Use this for initialization
-	void Start () {
+    // Event declaration
+    public static event ItemReachedOutputEvent OnItemReachedOutputEvent;
+    public delegate void ItemReachedOutputEvent(Item item);
+
+    // Use this for initialization
+    void Start () {
         SetItemType(itemType);
 	}
 	
@@ -21,5 +25,9 @@ public class Item : MonoBehaviour {
     public void SetItemType(ItemType itemType) {
         this.itemType = itemType;
         spriteRenderer.sprite = itemType.sprite;
+    }
+
+    public static void TriggerItemReachedOutputEvent(Item item) {
+        OnItemReachedOutputEvent(item);
     }
 }

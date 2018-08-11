@@ -6,9 +6,12 @@ public class PickupPoint : MonoBehaviour {
 
     [Header("General properties")]
     public GameObject pickupItemInstance;
+    public Vector3 itemOffset;
 
     public bool canPickupHere = true;
     public bool canDropHere = true;
+    public bool isOutput = false;
+    public Transform outputPosition;
 
     [Header("Gizmos")]
     public Sprite unoccupiedIcon;
@@ -23,9 +26,14 @@ public class PickupPoint : MonoBehaviour {
         if (GetItem() != null) return false;
 
         item.transform.SetParent(transform);
-        item.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+        item.transform.SetPositionAndRotation(transform.position + itemOffset, Quaternion.identity);
         item.transform.localScale = Vector3.one;
         pickupItemInstance = item;
+
+        if (isOutput) {
+            RemoveItem();
+            StartCoroutine(SlideToPosition(item, outputPosition.position));
+        }
 
         return true;
     }
@@ -75,5 +83,31 @@ public class PickupPoint : MonoBehaviour {
         if (pickupItemInstance != null && occupiedIcon) {
             Gizmos.DrawIcon(transform.position, occupiedIcon.name);
         }
+    }
+
+    IEnumerator SlideToPosition(GameObject go, Vector3 position) {
+
+        Item item = go.GetComponent<Item>();
+
+        while (true) {
+
+            if (go.transform.position.x >= position.x) {
+                // The current Item have reached the first pickupPoint!
+                Debug.Log("Output sent!");
+                Item.TriggerItemReachedOutputEvent(item);
+                Destroy(go);
+
+                break;
+            } else {
+                Vector3 currentItemPos = go.transform.position;
+                currentItemPos.x += Time.deltaTime;
+                go.transform.position = currentItemPos;
+            }
+
+            yield return null;
+        }
+
+        // Yield execution of this coroutine and return to the main loop until next frame
+        yield return null;
     }
 }
