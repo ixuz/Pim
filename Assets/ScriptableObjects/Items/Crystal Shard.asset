@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Crystal Shard
   sprite: {fileID: 21300018, guid: bf43cf80a507b304aa3269353876233f, type: 3}
-  value: 9
+  value: 4
