@@ -93,8 +93,50 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
-  - name: 
+  - name: Blip_Select11
     audioClip: {fileID: 8300000, guid: 9ee91ef3af6609f4ab1f451572952d89, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select12
+    audioClip: {fileID: 8300000, guid: ac39bec7be031b34985f2342ff997029, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select12
+    audioClip: {fileID: 8300000, guid: ac39bec7be031b34985f2342ff997029, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select13
+    audioClip: {fileID: 8300000, guid: 82fdd2882e6058c4d826371d74a9a414, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select14
+    audioClip: {fileID: 8300000, guid: f954925f77533ce4fbcd1057f10c8365, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select15
+    audioClip: {fileID: 8300000, guid: 11818c1b67a1c214cb95f9a2e2c6db05, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select16
+    audioClip: {fileID: 8300000, guid: 6f2894e8534fb4b4caa418f54789e38d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Blip_Select17
+    audioClip: {fileID: 8300000, guid: 5e4ea846d8b2b4b46b1e076204b4f927, type: 3}
     volume: 1
     pitch: 1
     loop: 0
