@@ -8,12 +8,14 @@ public class Pim : MonoBehaviour {
     public Animator animator;
     public Rigidbody2D rb;
     public Transform itemHolder;
+    public int itemHolderSortingOrder = 30;
     public GameObject currentItem;
 
     public float movementSmoothing = 1.0f;
 
     public float speed = 2f;
 
+    private int itemSortingOrderCache = -1;
     private Vector2 currentVelocity;
 
 	// Update is called once per frame
@@ -92,6 +94,10 @@ public class Pim : MonoBehaviour {
         currentItem.transform.SetPositionAndRotation(itemHolder.transform.position, Quaternion.identity);
         currentItem.transform.localScale = Vector3.one;
 
+        SpriteRenderer spriteRenderer = currentItem.GetComponent<SpriteRenderer>();
+        itemSortingOrderCache = spriteRenderer.sortingOrder;
+        spriteRenderer.sortingOrder = itemHolderSortingOrder;
+
         return true;
     }
 
@@ -101,6 +107,7 @@ public class Pim : MonoBehaviour {
         if (pickupPoint.GetItem()) return false;
 
         if (pickupPoint.AddItem(currentItem)) {
+            currentItem.GetComponent<SpriteRenderer>().sortingOrder = itemSortingOrderCache;
             currentItem = null;
         }
 

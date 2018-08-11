@@ -43,6 +43,7 @@ public class Item : MonoBehaviour {
         if (item == this) {
             Debug.Log("I ded!");
             AudioManager.instance.PlaySfx("Blip_Select14");
+            Game.instance.ChangeScore(itemType.value);
         }
     }
 }
