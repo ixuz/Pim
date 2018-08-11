@@ -49,6 +49,7 @@ public class ItemSpawner : MonoBehaviour {
             ItemType itemType = levels[currentLevelIndex].itemTypesToSpawn[currentItemIndex];
 
             item.SetItemType(itemType);
+            StartCoroutine(SlideItemToPickupPoint(itemInstance, 0));
         }
 
         if (pickupPoints.Length == 0) {
@@ -56,7 +57,6 @@ public class ItemSpawner : MonoBehaviour {
             return itemInstance;
         }
 
-        StartCoroutine(SlideItemToPickupPoint(itemInstance, 0));
 
         return itemInstance;
     }
