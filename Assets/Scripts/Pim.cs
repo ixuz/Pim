@@ -71,8 +71,9 @@ public class Pim : MonoBehaviour {
                             }
                         } else {
                             if (pickupPoint.CanDropHere()) {
-                                DropItem(pickupPoint);
-                                AudioManager.instance.PlaySfx("Blip_Select7");
+                                if (DropItem(pickupPoint)) {
+                                    AudioManager.instance.PlaySfx("Blip_Select7");
+                                }
                             }
                         }
                     }
