@@ -7,7 +7,7 @@ public class Pim : MonoBehaviour {
 
     public Animator animator;
     public Transform itemHolder;
-    public Item currentItem;
+    public GameObject currentItem;
 
     public float movementSmoothing = 1.0f;
 
@@ -30,8 +30,7 @@ public class Pim : MonoBehaviour {
         Vector2 actualVelocity = Vector2.Lerp(currentVelocity, desiredVelocity, 1/movementSmoothing * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) {
-            //grabClosestItem();
-            
+            Interact();
         }
 
 
@@ -53,21 +52,60 @@ public class Pim : MonoBehaviour {
         }
     }
 
-    public void grabClosestItem() {
+    public void Interact() {
         Debug.Log("Try to grab closest item");
+        List<GameObject> pickupPoints = GameObject.FindGameObjectsWithTag("PickupPoint").ToList<GameObject>();
+        pickupPoints = pickupPoints.OrderBy(x => GetDistanceToObject(x)).ToList();
 
-        List<GameObject> gos = GameObject.FindGameObjectsWithTag("Item").ToList<GameObject>();
-        if (gos.Count() == 0) {
-            return;
+        foreach (GameObject pickupPointObj in pickupPoints) {
+            PickupPoint pickupPoint = pickupPointObj.GetComponent<PickupPoint>();
+            if (pickupPoint != null) {
+                Collider2D pickupPointCollider = pickupPointObj.GetComponent<Collider2D>();
+                if (pickupPointCollider != null) {
+                    bool standingOnPickupPoint = pickupPointCollider.OverlapPoint(transform.position);
+
+                    if (standingOnPickupPoint) {
+                        Debug.Log("pickupPoint.GetItem(): " + pickupPoint.GetItem());
+                        if (pickupPoint.GetItem() != null) {
+                            Debug.Log("I can try to pick this item up!");
+                            PickupItem(pickupPoint);
+                        } else {
+                            Debug.Log("I can try to drop an item here!");
+                            DropItem(pickupPoint);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bool PickupItem(PickupPoint pickupPoint) {
+        if (IsHoldingItem()) return false;
+        if (!pickupPoint.GetItem()) return false;
+
+        currentItem = pickupPoint.GetItem();
+        pickupPoint.RemoveItem();
+        currentItem.transform.SetParent(itemHolder);
+        currentItem.transform.SetPositionAndRotation(itemHolder.transform.position, Quaternion.identity);
+        currentItem.transform.localScale = Vector3.one;
+
+        return true;
+    }
+
+    bool DropItem(PickupPoint pickupPoint) {
+        if (!IsHoldingItem()) return false;
+        if (pickupPoint == null) return false;
+        if (pickupPoint.GetItem()) return false;
+
+        if (pickupPoint.AddItem(currentItem)) {
+            currentItem = null;
         }
 
-        gos = gos.OrderBy(x => GetDistanceToObject(x)).ToList();
+        return true;
+    }
 
-        if (gos.Count > 0) {
-            GameObject closestObject = gos[0];
-            Item closestItem = closestObject.GetComponent<Item>();
-            Debug.Log("Distance to closest closestObject:" + GetDistanceToObject(closestObject));
-        }
+    bool IsHoldingItem() {
+        return (currentItem != null);
     }
 
     float GetDistanceToObject(GameObject go) {

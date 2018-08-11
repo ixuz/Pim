@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class PickupPoint : MonoBehaviour {
 
-    private GameObject pickupItemInstance;
+    public GameObject pickupItemInstance;
 
     [Header("Gizmos")]
     public Sprite unoccupiedIcon;
     public Sprite occupiedIcon;
 
-    public bool AddItem(GameObject itemPrefab) {
-        if (pickupItemInstance != null) {
-            return false;
-        }
+    public bool AddItem(GameObject item) {
+        if (item == null) return false;
+        if (GetItem() != null) return false;
 
-        GameObject go = Instantiate(itemPrefab);
+        item.transform.SetParent(transform);
+        item.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+        item.transform.localScale = Vector3.one;
+        pickupItemInstance = item;
+
         return true;
     }
 
     public bool RemoveItem() {
         if (pickupItemInstance != null) {
-            Destroy(pickupItemInstance);
             pickupItemInstance = null;
             return true;
         }
@@ -29,11 +31,15 @@ public class PickupPoint : MonoBehaviour {
         return false;
     }
 
+    public GameObject GetItem() {
+        return pickupItemInstance;
+    }
+
     void OnDrawGizmos() {
-        if (unoccupiedIcon) {
+        if (pickupItemInstance == null && unoccupiedIcon) {
             Gizmos.DrawIcon(transform.position, unoccupiedIcon.name);
         }
-        if (occupiedIcon) {
+        if (pickupItemInstance != null && occupiedIcon) {
             Gizmos.DrawIcon(transform.position, occupiedIcon.name);
         }
     }
