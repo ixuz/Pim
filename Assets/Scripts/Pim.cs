@@ -31,7 +31,7 @@ public class Pim : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) {
             //grabClosestItem();
-        
+            
         }
 
 
