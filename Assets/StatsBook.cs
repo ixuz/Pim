@@ -14,7 +14,7 @@ public class StatsBook : MonoBehaviour {
 
     void Start() {
         timerValue.text = "12345";
-        scoreValue.text = "54321";
+        scoreValue.text = "0";
         targetScoreValue.text = "99999";
         levelText.text = "Level  " + (Game.instance.GetLevel()+1);
     }
@@ -27,13 +27,19 @@ public class StatsBook : MonoBehaviour {
 
     void OnEnable() {
         Game.OnChangeScoreEvent += OnChangeScoreEvent;
+        Game.OnClearScoreEvent += OnClearScoreEvent;
     }
 
     void OnDisable() {
         Game.OnChangeScoreEvent -= OnChangeScoreEvent;
+        Game.OnClearScoreEvent -= OnClearScoreEvent;
     }
 
     void OnChangeScoreEvent(int amount, int newTotalScore) {
+        scoreValue.text = newTotalScore.ToString();
+    }
+
+    void OnClearScoreEvent(int newTotalScore) {
         scoreValue.text = newTotalScore.ToString();
     }
 }

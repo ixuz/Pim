@@ -24239,7 +24239,7 @@ PrefabInstance:
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[0].itemTypesToSpawn.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
@@ -24357,42 +24357,42 @@ PrefabInstance:
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[1].targetScore
-      value: 6
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[1].itemTypesToSpawn.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6cbf2687543690143a382dce0ea75eaf,
+      objectReference: {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb,
         type: 2}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[1].itemTypesToSpawn.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb,
+      objectReference: {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085,
         type: 2}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[1].itemTypesToSpawn.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: a6b5692dededd4d4087952ef5454f6a2,
+      objectReference: {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb,
         type: 2}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[1].itemTypesToSpawn.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085,
+      objectReference: {fileID: 11400000, guid: a6b5692dededd4d4087952ef5454f6a2,
         type: 2}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: levels.Array.data[1].itemTypesToSpawn.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb,
+      objectReference: {fileID: 11400000, guid: a842296251a627e4683057d2fc0e031b,
         type: 2}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
       propertyPath: spawnRate
-      value: 0.8
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1248889503967182864, guid: d08223ea0d3b7d24bb2339d67c89b0a8,
         type: 3}
