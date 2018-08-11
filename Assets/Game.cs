@@ -48,6 +48,7 @@ public class Game : MonoBehaviour {
 
         if (score >= itemSpawner.GetCurrentLevel().targetScore) {
             OnNewLevelEvent(itemSpawner.GetCurrentLevelIndex() + 1);
+            ClearScore();
         }
     }
 
