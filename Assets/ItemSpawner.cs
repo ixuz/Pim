@@ -18,7 +18,6 @@ public class ItemSpawner : MonoBehaviour {
     private int currentLevelIndex = 0;
     private int currentItemIndex = -1;
 
-
     // Update is called once per frame
     void Update () {
         if (spawnCooldown < 0) {
@@ -57,8 +56,28 @@ public class ItemSpawner : MonoBehaviour {
             return itemInstance;
         }
 
-
         return itemInstance;
+    }
+
+    public int GetCurrentLevelIndex() {
+        return currentLevelIndex;
+    }
+
+    public Level GetCurrentLevel() {
+        return levels[GetCurrentLevelIndex()];
+    }
+
+    void OnNewLevelEvent(int levelIndex) {
+        currentLevelIndex = levelIndex;
+        currentItemIndex = -1;
+}
+
+    void OnEnable() {
+        Game.OnNewLevelEvent += OnNewLevelEvent;
+    }
+
+    void OnDisable() {
+        Game.OnNewLevelEvent -= OnNewLevelEvent;
     }
 
     void OnDrawGizmos() {
@@ -109,6 +128,7 @@ public class ItemSpawner : MonoBehaviour {
 
     [System.Serializable]
     public struct Level {
+        public int targetScore;
         public ItemType[] itemTypesToSpawn;
     }
 }
