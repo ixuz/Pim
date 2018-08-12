@@ -46,7 +46,7 @@ public class StatsBook : MonoBehaviour {
     }
 
     void OnNewLevelEvent(int levelIndex) {
-        targetScoreValue.text = Game.instance.GetCurrentLevelData().targetScore.ToString();
+        targetScoreValue.text = Game.instance.GetLevelData(levelIndex).targetScore.ToString();
         levelText.text = "Level  " + (levelIndex + 1);
         levelTimer = Game.instance.GetLevelData(levelIndex).startTimer;
     }

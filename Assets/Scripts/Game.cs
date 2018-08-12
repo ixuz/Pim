@@ -14,7 +14,6 @@ public class Game : MonoBehaviour {
     private int score = 0;
     private int currentLevel = 0;
 
-
     // Event declaration
     public static event ChangeScoreEvent OnChangeScoreEvent;
     public delegate void ChangeScoreEvent(int amount, int newTotalScore);
@@ -51,6 +50,10 @@ public class Game : MonoBehaviour {
         return levels[index];
     }
 
+    public int GetLevelCount() {
+        return levels.Length;
+    }
+
     public int GetLevel() {
         return currentLevel;
     }
@@ -71,9 +74,10 @@ public class Game : MonoBehaviour {
         score += amount;
         OnChangeScoreEvent(amount, score);
 
-        if (itemSpawner.GetCurrentLevelIndex() < itemSpawner.GetLevelCount()) {
+        if (currentLevel < GetLevelCount()) {
             if (score >= Game.instance.GetCurrentLevelData().targetScore) {
-                OnNewLevelEvent(itemSpawner.GetCurrentLevelIndex() + 1);
+                currentLevel++;
+                OnNewLevelEvent(currentLevel);
                 ClearScore();
             }
         }
@@ -127,5 +131,6 @@ public class Game : MonoBehaviour {
         public int targetScore;
         public int startTimer;
         public float itemSpawnRate;
+        public ItemType[] itemTypes;
     }
 }
