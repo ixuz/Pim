@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Particle Accelerator
   sprite: {fileID: 21300030, guid: 876a9acfb8ca9114fbb228f0e59ac5e1, type: 3}
   value: 32
+  timeGain: 60

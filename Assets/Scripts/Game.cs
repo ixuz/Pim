@@ -33,7 +33,7 @@ public class Game : MonoBehaviour {
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Start() {

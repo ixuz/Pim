@@ -9,4 +9,5 @@ public class ItemType : ScriptableObject {
     public string itemName = "Unnamed ItemType";
     public Sprite sprite = null;
     public int value = 0;
+    public int timeGain = 0;
 }
