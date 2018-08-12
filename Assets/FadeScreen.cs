@@ -23,18 +23,6 @@ public class FadeScreen : MonoBehaviour {
         animator.SetBool("ignoreSplash", ignoreSplash);
     }
 
-    void Update () {
-        if (Input.GetKeyDown(KeyCode.Keypad0)) {
-            FadeIn();
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad1)) {
-            FadeOut();
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2)) {
-            LoadScene("SampleScene");
-        }
-    }
-
     public void FadeIn() {
         animator.SetBool("fadeIn", true);
     }
