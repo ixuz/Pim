@@ -108,7 +108,7 @@ public class Pim : MonoBehaviour {
         }
 
         foreach (PickupPoint pickupPoint in pickupPoints) {
-            if (pickupPoint.CanDropHere()) {
+            //if (pickupPoint.CanDropHere()) {
                 if (pickupPoint.IsOccupied()) {
 
                     GameObject recipesObj = GameObject.FindGameObjectWithTag("Recipes");
@@ -126,15 +126,18 @@ public class Pim : MonoBehaviour {
                                 if (foundRecipe.output != null) {
                                     GameObject go = Instantiate(mergableEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
                                     highlightEffectCache.Add(go);
+                                go.transform.SetParent(itemObject.transform);
                                 }
                             }
                         }
                     }
                 } else {
-                    GameObject go = Instantiate(highlightEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
-                    highlightEffectCache.Add(go);
+                    if (pickupPoint.CanDropHere()) {
+                        GameObject go = Instantiate(highlightEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
+                        highlightEffectCache.Add(go);
+                    }
                 }
-            }
+            //}
         }
     }
 

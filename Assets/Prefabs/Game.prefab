@@ -44,50 +44,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreenObject: {fileID: 0}
+  fadeScreen: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 096e19c12c2338d48ad6e278b6ed5c7a, type: 2}
   itemSpawner: {fileID: 0}
   levels:
   - targetScore: 6
-    startTimer: 35
-    itemSpawnRate: 0.25
-    itemTypes: []
-  - targetScore: 12
     startTimer: 60
     itemSpawnRate: 0.2
     itemTypes:
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+  - targetScore: 12
+    startTimer: 70
+    itemSpawnRate: 0.225
+    itemTypes:
+    - {fileID: 11400000, guid: 106f8147b6bf0e14e8ba622e0698a724, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+  - targetScore: 24
+    startTimer: 80
+    itemSpawnRate: 0.25
+    itemTypes:
+    - {fileID: 11400000, guid: 106f8147b6bf0e14e8ba622e0698a724, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
+  - targetScore: 40
+    startTimer: 90
+    itemSpawnRate: 0.275
+    itemTypes:
+    - {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb, type: 2}
+    - {fileID: 11400000, guid: a842296251a627e4683057d2fc0e031b, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+  - targetScore: 64
+    startTimer: 100
+    itemSpawnRate: 0.3
+    itemTypes:
+    - {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb, type: 2}
+    - {fileID: 11400000, guid: a842296251a627e4683057d2fc0e031b, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
     - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
     - {fileID: 11400000, guid: 106f8147b6bf0e14e8ba622e0698a724, type: 2}
-  - targetScore: 24
-    startTimer: 60
-    itemSpawnRate: 0.25
-    itemTypes: []
-  - targetScore: 48
-    startTimer: 60
-    itemSpawnRate: 0.3
-    itemTypes: []
-  - targetScore: 96
-    startTimer: 60
+  - targetScore: 80
+    startTimer: 110
+    itemSpawnRate: 0.325
+    itemTypes:
+    - {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb, type: 2}
+    - {fileID: 11400000, guid: a842296251a627e4683057d2fc0e031b, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+    - {fileID: 11400000, guid: 106f8147b6bf0e14e8ba622e0698a724, type: 2}
+    - {fileID: 11400000, guid: a6b5692dededd4d4087952ef5454f6a2, type: 2}
+  - targetScore: 120
+    startTimer: 120
     itemSpawnRate: 0.35
-    itemTypes: []
-  - targetScore: 96
-    startTimer: 60
-    itemSpawnRate: 0.35
-    itemTypes: []
-  - targetScore: 96
-    startTimer: 60
-    itemSpawnRate: 0.35
-    itemTypes: []
-  - targetScore: 96
-    startTimer: 60
-    itemSpawnRate: 0.35
-    itemTypes: []
-  - targetScore: 96
-    startTimer: 60
-    itemSpawnRate: 0.35
-    itemTypes: []
-  - targetScore: 96
-    startTimer: 60
-    itemSpawnRate: 0.35
-    itemTypes: []
+    itemTypes:
+    - {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb, type: 2}
+    - {fileID: 11400000, guid: a842296251a627e4683057d2fc0e031b, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+    - {fileID: 11400000, guid: 106f8147b6bf0e14e8ba622e0698a724, type: 2}
+    - {fileID: 11400000, guid: a6b5692dededd4d4087952ef5454f6a2, type: 2}
+  - targetScore: 200
+    startTimer: 130
+    itemSpawnRate: 0.375
+    itemTypes:
+    - {fileID: 11400000, guid: 39f4a7358f6e73845970448da9a96dbb, type: 2}
+    - {fileID: 11400000, guid: a842296251a627e4683057d2fc0e031b, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+    - {fileID: 11400000, guid: 106f8147b6bf0e14e8ba622e0698a724, type: 2}
+    - {fileID: 11400000, guid: a6b5692dededd4d4087952ef5454f6a2, type: 2}
   newLevelEffect: {fileID: 913816358832297024, guid: 7f99da01d8a40104fb20f362efbb6976,
     type: 3}
