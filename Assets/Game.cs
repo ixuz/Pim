@@ -30,12 +30,24 @@ public class Game : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    void Start() {
+        OnNewLevelEvent(0);
+    }
+
     public void LoadLevel(int levelIndex) {
 
     }
 
     public int GetLevel() {
         return currentLevel;
+    }
+
+    public int GetLevelTargetScore() {
+        if (itemSpawner.GetCurrentLevelIndex() < itemSpawner.GetLevelCount()) {
+            return itemSpawner.GetCurrentLevel().targetScore;
+        } else {
+            return 0;
+        }
     }
 
     public void AddScore(int amount) {
@@ -46,10 +58,13 @@ public class Game : MonoBehaviour {
         score += amount;
         OnChangeScoreEvent(amount, score);
 
-        if (score >= itemSpawner.GetCurrentLevel().targetScore) {
-            OnNewLevelEvent(itemSpawner.GetCurrentLevelIndex() + 1);
-            ClearScore();
+        if (itemSpawner.GetCurrentLevelIndex() < itemSpawner.GetLevelCount()) {
+            if (score >= itemSpawner.GetCurrentLevel().targetScore) {
+                OnNewLevelEvent(itemSpawner.GetCurrentLevelIndex() + 1);
+                ClearScore();
+            }
         }
+        
     }
 
     public int GetScore() {

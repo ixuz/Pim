@@ -63,6 +63,10 @@ public class ItemSpawner : MonoBehaviour {
         return currentLevelIndex;
     }
 
+    public int GetLevelCount() {
+        return levels.Length;
+    }
+
     public Level GetCurrentLevel() {
         return levels[GetCurrentLevelIndex()];
     }
