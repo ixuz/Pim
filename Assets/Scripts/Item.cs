@@ -31,6 +31,8 @@ public class Item : MonoBehaviour {
     }
 
     public void SetItemType(ItemType itemType) {
+        if (itemType == null) return;
+
         this.itemType = itemType;
         spriteRenderer.sprite = itemType.sprite;
     }

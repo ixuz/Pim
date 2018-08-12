@@ -22,6 +22,7 @@ public class ItemSpawner : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (spawnCooldown < 0) {
+            Debug.Log("Current spawn rate: " + Game.instance.GetCurrentLevelData().itemSpawnRate);
             spawnCooldown = 1/Game.instance.GetCurrentLevelData().itemSpawnRate;
 
             GameObject itemObj = SpawnItem();
@@ -43,22 +44,26 @@ public class ItemSpawner : MonoBehaviour {
             return null;
         }
         */
-        GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity);
-        Item item = itemInstance.GetComponent<Item>();
-        if (item) {
-            //ItemType itemType = levels[currentLevelIndex].itemTypesToSpawn[currentItemIndex];
-            ItemType itemType = itemTypes[Random.Range(0, itemTypes.Length)];
+        ItemType[] selectFromTypes = Game.instance.GetCurrentLevelData().itemTypes;
+        if (selectFromTypes.Length > 0) {
+            GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            Item item = itemInstance.GetComponent<Item>();
+            if (item) {
+                //ItemType itemType = levels[currentLevelIndex].itemTypesToSpawn[currentItemIndex];
+                ItemType itemType = selectFromTypes[Random.Range(0, selectFromTypes.Length)];
 
-            item.SetItemType(itemType);
-            StartCoroutine(SlideItemToPickupPoint(itemInstance, 0));
-        }
+                item.SetItemType(itemType);
+                StartCoroutine(SlideItemToPickupPoint(itemInstance, 0));
+            }
 
-        if (pickupPoints.Length == 0) {
-            Debug.LogWarning("Warning no pickup points assigned to the ItemSpawner");
+            if (pickupPoints.Length == 0) {
+                Debug.LogWarning("Warning no pickup points assigned to the ItemSpawner");
+                return itemInstance;
+            }
+
             return itemInstance;
         }
-
-        return itemInstance;
+        return null;
     }
 
     public int GetCurrentLevelIndex() {
