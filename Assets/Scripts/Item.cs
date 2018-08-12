@@ -41,7 +41,7 @@ public class Item : MonoBehaviour {
 
     public void ItemReachedOutput(Item item, ItemType itemType) {
         if (item == this) {
-            Debug.Log("I ded!");
+            EZCameraShake.CameraShaker.Instance.ShakeOnce(0.4f, 5.0f, 0.4f, 0.4f);
             AudioManager.instance.PlaySfx("Blip_Select14");
             Game.instance.ChangeScore(itemType.value);
         }

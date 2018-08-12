@@ -75,6 +75,7 @@ public class Pim : MonoBehaviour {
                             if (pickupPoint.CanDropHere()) {
                                 if (DropItem(pickupPoint)) {
                                     AudioManager.instance.PlaySfx("Blip_Select7");
+                                    EZCameraShake.CameraShaker.Instance.ShakeOnce(0.2f, 5.0f, 0.2f, 0.2f);
                                 }
                             }
                         }

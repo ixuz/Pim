@@ -107,6 +107,7 @@ public class ItemSpawner : MonoBehaviour {
 
                 item = null;
                 AudioManager.instance.PlaySfx("Blip_Select17");
+                EZCameraShake.CameraShaker.Instance.ShakeOnce(0.2f, 5.0f, 0.2f, 0.2f);
                 break;
             } else {
                 if (item.transform.position.x >= pickupPoint.transform.position.x - 1) {
