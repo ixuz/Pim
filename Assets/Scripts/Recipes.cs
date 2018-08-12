@@ -6,6 +6,18 @@ public class Recipes : MonoBehaviour {
 
     public Recipe[] recipes;
 
+    public List<Recipe> FindAllRecipesWithItem(ItemType itemType) {
+        List<Recipe> recipeList = new List<Recipe>();
+
+        foreach (Recipe recipe in recipes) {
+            if (recipe.inputA == itemType || recipe.inputB == itemType || recipe.output == itemType) {
+                recipeList.Add(recipe);
+            }
+        }
+
+        return recipeList;
+    }
+
     public Recipe GetRecipe(ItemType a, ItemType b) {
 
         foreach (Recipe recipe in recipes) {

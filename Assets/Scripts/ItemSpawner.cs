@@ -101,7 +101,6 @@ public class ItemSpawner : MonoBehaviour {
 
             if (item.transform.position.x >= pickupPoint.transform.position.x) {
                 // The current Item have reached the first pickupPoint!
-                Debug.Log("Yay!");
 
                 pickupPoint.AddItem(item);
 
@@ -112,7 +111,6 @@ public class ItemSpawner : MonoBehaviour {
             } else {
                 if (item.transform.position.x >= pickupPoint.transform.position.x - 1) {
                     if (pickupPoint.GetItem() != null) {
-                        Debug.Log("Push!");
 
                         int nextPickupPointIndex = pickupPointIndex+1;
                         StartCoroutine(SlideItemToPickupPoint(pickupPoint.GetItem(), nextPickupPointIndex));

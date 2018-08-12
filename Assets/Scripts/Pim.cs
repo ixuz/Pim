@@ -18,8 +18,14 @@ public class Pim : MonoBehaviour {
     private int itemSortingOrderCache = -1;
     private Vector2 currentVelocity;
 
-	// Update is called once per frame
-	void Update () {
+    // Event declaration
+    public static event PimPickedUpItemEvent OnPimPickedUpItemEvent;
+    public delegate void PimPickedUpItemEvent(Pim pim, Item item);
+    public static event PimDroppedItemEvent OnPimDroppedItemEvent;
+    public delegate void PimDroppedItemEvent(Pim pim, Item item);
+
+    // Update is called once per frame
+    void Update () {
 
         // Handle inputs
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
@@ -99,6 +105,8 @@ public class Pim : MonoBehaviour {
         itemSortingOrderCache = spriteRenderer.sortingOrder;
         spriteRenderer.sortingOrder = itemHolderSortingOrder;
 
+        OnPimPickedUpItemEvent(this, currentItem.GetComponent<Item>());
+
         return true;
     }
 
@@ -109,6 +117,7 @@ public class Pim : MonoBehaviour {
 
         if (pickupPoint.AddItem(currentItem)) {
             currentItem.GetComponent<SpriteRenderer>().sortingOrder = itemSortingOrderCache;
+            OnPimDroppedItemEvent(this, currentItem.GetComponent<Item>());
             currentItem = null;
         }
 
@@ -121,5 +130,15 @@ public class Pim : MonoBehaviour {
 
     float GetDistanceToObject(GameObject go) {
         return (go.transform.position - transform.position).magnitude;
+    }
+
+    void OnEnable() {
+        OnPimPickedUpItemEvent += delegate { };
+        OnPimDroppedItemEvent += delegate { };
+    }
+
+    void OnDisable() {
+        OnPimPickedUpItemEvent -= delegate { };
+        OnPimDroppedItemEvent -= delegate { };
     }
 }
