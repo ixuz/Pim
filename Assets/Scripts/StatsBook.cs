@@ -26,7 +26,6 @@ public class StatsBook : MonoBehaviour {
     void Update() {
         levelTimer -= Time.deltaTime;
 
-        timerValue.text = Mathf.Floor(levelTimer / 60).ToString("00") + ":" + Mathf.Floor(levelTimer % 60).ToString("00");
 
         if (levelTimer < 0) {
             levelTimer = 0;
@@ -35,6 +34,7 @@ public class StatsBook : MonoBehaviour {
                 fadeScreen.LoadScene("GameOver");
             }
         }
+        timerValue.text = Mathf.Floor(levelTimer / 60).ToString("00") + ":" + Mathf.Floor(levelTimer % 60).ToString("00");
     }
 
     void OnEnable() {

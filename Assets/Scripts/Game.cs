@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class Game : MonoBehaviour {
 
     public static Game instance;
+    public GameObject fadeScreenObject;
     public AudioMixer audioMixer;
     public ItemSpawner itemSpawner;
 
@@ -32,6 +33,8 @@ public class Game : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
+
+        fadeScreenObject.SetActive(true);
 
         //DontDestroyOnLoad(gameObject);
     }
