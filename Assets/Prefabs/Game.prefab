@@ -48,8 +48,8 @@ MonoBehaviour:
   itemSpawner: {fileID: 0}
   levels:
   - targetScore: 6
-    startTimer: 5
-    itemSpawnRate: 0.15
+    startTimer: 35
+    itemSpawnRate: 0.25
     itemTypes: []
   - targetScore: 12
     startTimer: 60
@@ -64,6 +64,26 @@ MonoBehaviour:
   - targetScore: 48
     startTimer: 60
     itemSpawnRate: 0.3
+    itemTypes: []
+  - targetScore: 96
+    startTimer: 60
+    itemSpawnRate: 0.35
+    itemTypes: []
+  - targetScore: 96
+    startTimer: 60
+    itemSpawnRate: 0.35
+    itemTypes: []
+  - targetScore: 96
+    startTimer: 60
+    itemSpawnRate: 0.35
+    itemTypes: []
+  - targetScore: 96
+    startTimer: 60
+    itemSpawnRate: 0.35
+    itemTypes: []
+  - targetScore: 96
+    startTimer: 60
+    itemSpawnRate: 0.35
     itemTypes: []
   - targetScore: 96
     startTimer: 60
