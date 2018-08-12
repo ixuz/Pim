@@ -76,6 +76,15 @@ public class Game : MonoBehaviour {
         OnClearScoreEvent(score);
     }
 
+    public void QuitApplication() {
+        Application.Quit();
+    }
+
+    public void PauseGame() {
+        if (Time.timeScale != 0) { Time.timeScale = 0; }
+        else { Time.timeScale = 1; }
+    }
+
     void OnEnable() {
         OnChangeScoreEvent += delegate { };
         OnClearScoreEvent += delegate { };
