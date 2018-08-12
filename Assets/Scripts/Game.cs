@@ -7,6 +7,7 @@ public class Game : MonoBehaviour {
 
     public static Game instance;
     public GameObject fadeScreenObject;
+    public FadeScreen fadeScreen;
     public AudioMixer audioMixer;
     public ItemSpawner itemSpawner;
 
@@ -132,6 +133,10 @@ public class Game : MonoBehaviour {
     }
 
     void NewLevelEventEffect(int levelIndex) {
+        if (levelIndex == levels.Length) {
+            fadeScreen.LoadScene("Victory");
+            return;
+        }
         if (levelIndex == 0) return;
         Instantiate(newLevelEffect, Vector3.zero, Quaternion.identity);
     }
