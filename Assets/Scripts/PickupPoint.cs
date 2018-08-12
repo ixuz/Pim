@@ -76,6 +76,10 @@ public class PickupPoint : MonoBehaviour {
         return pickupItemInstance;
     }
 
+    public bool IsOccupied() {
+        return pickupItemInstance != null;
+    }
+
     void OnDrawGizmos() {
         if (pickupItemInstance == null && unoccupiedIcon) {
             Gizmos.DrawIcon(transform.position, unoccupiedIcon.name);

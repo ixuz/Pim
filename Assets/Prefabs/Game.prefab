@@ -48,9 +48,11 @@ MonoBehaviour:
   itemSpawner: {fileID: 0}
   levels:
   - targetScore: 6
-    startTimer: 5
+    startTimer: 60
     itemSpawnRate: 0.15
-    itemTypes: []
+    itemTypes:
+    - {fileID: 11400000, guid: c4b89766ab1c7e04a9ceef010a413eeb, type: 2}
+    - {fileID: 11400000, guid: 299a24e7425c3844e9bca9145c607085, type: 2}
   - targetScore: 12
     startTimer: 60
     itemSpawnRate: 0.2
