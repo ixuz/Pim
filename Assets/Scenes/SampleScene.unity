@@ -1912,6 +1912,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 096e19c12c2338d48ad6e278b6ed5c7a, type: 2}
   itemSpawner: {fileID: 335300232}
+  levels:
+  - targetScore: 10
+    startTimer: 60
+    itemSpawnRate: 0.2
+  - targetScore: 20
+    startTimer: 55
+    itemSpawnRate: 0.25
+  - targetScore: 30
+    startTimer: 50
+    itemSpawnRate: 0.35
+  - targetScore: 40
+    startTimer: 45
+    itemSpawnRate: 0.4
+  - targetScore: 50
+    startTimer: 40
+    itemSpawnRate: 0.45
+  - targetScore: 60
+    startTimer: 35
+    itemSpawnRate: 0.5
+  - targetScore: 70
+    startTimer: 30
+    itemSpawnRate: 0.55
+  - targetScore: 80
+    startTimer: 25
+    itemSpawnRate: 0.6
+  - targetScore: 90
+    startTimer: 20
+    itemSpawnRate: 0.65
+  - targetScore: 100
+    startTimer: 15
+    itemSpawnRate: 0.7
 --- !u!1 &1574946797
 GameObject:
   m_ObjectHideFlags: 0

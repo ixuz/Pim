@@ -22,7 +22,7 @@ public class ItemSpawner : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (spawnCooldown < 0) {
-            spawnCooldown = 1/spawnRate;
+            spawnCooldown = 1/Game.instance.GetCurrentLevelData().itemSpawnRate;
 
             GameObject itemObj = SpawnItem();
         }

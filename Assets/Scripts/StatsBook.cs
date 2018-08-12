@@ -20,7 +20,7 @@ public class StatsBook : MonoBehaviour {
     }
 
     void Update() {
-        levelTimer += Time.deltaTime;
+        levelTimer -= Time.deltaTime;
 
         timerValue.text = Mathf.Floor(levelTimer / 60).ToString("00") + ":" + Mathf.Floor(levelTimer % 60).ToString("00");
     }
@@ -46,7 +46,8 @@ public class StatsBook : MonoBehaviour {
     }
 
     void OnNewLevelEvent(int levelIndex) {
-        targetScoreValue.text = Game.instance.GetLevelTargetScore().ToString();
+        targetScoreValue.text = Game.instance.GetCurrentLevelData().targetScore.ToString();
         levelText.text = "Level  " + (levelIndex + 1);
+        levelTimer = Game.instance.GetLevelData(levelIndex).startTimer;
     }
 }

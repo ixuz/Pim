@@ -9,8 +9,11 @@ public class Game : MonoBehaviour {
     public AudioMixer audioMixer;
     public ItemSpawner itemSpawner;
 
+    public Level[] levels;
+
     private int score = 0;
     private int currentLevel = 0;
+
 
     // Event declaration
     public static event ChangeScoreEvent OnChangeScoreEvent;
@@ -40,6 +43,14 @@ public class Game : MonoBehaviour {
 
     }
 
+    public Level GetCurrentLevelData() {
+        return levels[currentLevel];
+    }
+
+    public Level GetLevelData(int index) {
+        return levels[index];
+    }
+
     public int GetLevel() {
         return currentLevel;
     }
@@ -61,7 +72,7 @@ public class Game : MonoBehaviour {
         OnChangeScoreEvent(amount, score);
 
         if (itemSpawner.GetCurrentLevelIndex() < itemSpawner.GetLevelCount()) {
-            if (score >= itemSpawner.GetCurrentLevel().targetScore) {
+            if (score >= Game.instance.GetCurrentLevelData().targetScore) {
                 OnNewLevelEvent(itemSpawner.GetCurrentLevelIndex() + 1);
                 ClearScore();
             }
@@ -109,5 +120,12 @@ public class Game : MonoBehaviour {
         OnChangeScoreEvent -= delegate { };
         OnClearScoreEvent -= delegate { };
         OnNewLevelEvent -= delegate { };
+    }
+
+    [System.Serializable]
+    public struct Level {
+        public int targetScore;
+        public int startTimer;
+        public float itemSpawnRate;
     }
 }
