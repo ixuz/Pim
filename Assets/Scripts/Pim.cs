@@ -10,6 +10,9 @@ public class Pim : MonoBehaviour {
     public Transform itemHolder;
     public int itemHolderSortingOrder = 30;
     public GameObject currentItem;
+    public GameObject highlightEffect;
+    public GameObject mergableEffect;
+    private List<GameObject> highlightEffectCache = new List<GameObject>();
 
     public float movementSmoothing = 1.0f;
 
@@ -70,6 +73,7 @@ public class Pim : MonoBehaviour {
                                     AudioManager.instance.PlaySfx("Blip_Select5");
                                 } else if (!pickedUpItem) {
                                     if (pickupPoint.MergeItem(currentItem)) {
+                                        ClearAllHighlightedTiles(this, currentItem.GetComponent<Item>());
                                         Destroy(currentItem);
                                         currentItem = null;
                                         PickupItem(pickupPoint);
@@ -89,6 +93,56 @@ public class Pim : MonoBehaviour {
                 }
             }
         }
+    }
+
+    void HighlightInteractableTiles(Pim pim, Item item) {
+        Debug.Log("Highlight interactable tiles");
+
+        List<GameObject> gos = GameObject.FindGameObjectsWithTag("PickupPoint").ToList<GameObject>();
+        List<PickupPoint> pickupPoints = new List<PickupPoint>();
+        foreach (var go in gos) {
+            PickupPoint pickupPoint = go.GetComponent<PickupPoint>();
+            if (pickupPoint) {
+                pickupPoints.Add(pickupPoint);
+            }
+        }
+
+        foreach (PickupPoint pickupPoint in pickupPoints) {
+            if (pickupPoint.CanDropHere()) {
+                if (pickupPoint.IsOccupied()) {
+
+                    GameObject recipesObj = GameObject.FindGameObjectWithTag("Recipes");
+                    Recipes recipes = recipesObj.GetComponent<Recipes>();
+
+                    GameObject itemObject = pickupPoint.GetItem();
+                    if (itemObject != null) {
+                        Item anItem = itemObject.GetComponent<Item>();
+                        if (anItem != null) {
+                            ItemType itemType = anItem.itemType;
+                            Item currentItemObj = currentItem.GetComponent<Item>();
+                            if (currentItem != null) {
+                                Recipes.Recipe foundRecipe = recipes.GetRecipe(itemType, currentItemObj.itemType);
+
+                                if (foundRecipe.output != null) {
+                                    GameObject go = Instantiate(mergableEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
+                                    highlightEffectCache.Add(go);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    GameObject go = Instantiate(highlightEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
+                    highlightEffectCache.Add(go);
+                }
+            }
+        }
+    }
+
+    void ClearAllHighlightedTiles(Pim pim, Item item) {
+        foreach (GameObject go in highlightEffectCache) {
+            Destroy(go);
+        }
+        highlightEffectCache.Clear();
     }
 
     bool PickupItem(PickupPoint pickupPoint) {
@@ -133,12 +187,12 @@ public class Pim : MonoBehaviour {
     }
 
     void OnEnable() {
-        OnPimPickedUpItemEvent += delegate { };
-        OnPimDroppedItemEvent += delegate { };
+        OnPimPickedUpItemEvent += HighlightInteractableTiles;
+        OnPimDroppedItemEvent += ClearAllHighlightedTiles;
     }
 
     void OnDisable() {
-        OnPimPickedUpItemEvent -= delegate { };
-        OnPimDroppedItemEvent -= delegate { };
+        OnPimPickedUpItemEvent -= HighlightInteractableTiles;
+        OnPimDroppedItemEvent -= ClearAllHighlightedTiles;
     }
 }
