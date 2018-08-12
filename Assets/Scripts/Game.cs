@@ -11,6 +11,8 @@ public class Game : MonoBehaviour {
 
     public Level[] levels;
 
+    public GameObject newLevelEffect;
+
     private int score = 0;
     private int currentLevel = 0;
 
@@ -117,13 +119,18 @@ public class Game : MonoBehaviour {
     void OnEnable() {
         OnChangeScoreEvent += delegate { };
         OnClearScoreEvent += delegate { };
-        OnNewLevelEvent += delegate { };
+        OnNewLevelEvent += NewLevelEventEffect;
     }
 
     void OnDisable() {
         OnChangeScoreEvent -= delegate { };
         OnClearScoreEvent -= delegate { };
-        OnNewLevelEvent -= delegate { };
+        OnNewLevelEvent -= NewLevelEventEffect;
+    }
+
+    void NewLevelEventEffect(int levelIndex) {
+        if (levelIndex == 0) return;
+        Instantiate(newLevelEffect, Vector3.zero, Quaternion.identity);
     }
 
     [System.Serializable]
