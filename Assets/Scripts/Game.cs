@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Game : MonoBehaviour {
 
     public static Game instance;
+    public AudioMixer audioMixer;
     public ItemSpawner itemSpawner;
 
     private int score = 0;
@@ -74,6 +76,27 @@ public class Game : MonoBehaviour {
     public void ClearScore() {
         score = 0;
         OnClearScoreEvent(score);
+    }
+
+    public void QuitApplication() {
+        Application.Quit();
+    }
+
+    public void SetMasterVolume(float volume) {
+        audioMixer.SetFloat("Master", volume);
+    }
+
+    public void SetBgmVolume(float volume) {
+        audioMixer.SetFloat("Bgm", volume);
+    }
+
+    public void SetSfxVolume(float volume) {
+        audioMixer.SetFloat("Sfx", volume);
+    }
+
+    public void PauseGame() {
+        if (Time.timeScale != 0) { Time.timeScale = 0; }
+        else { Time.timeScale = 1; }
     }
 
     void OnEnable() {

@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!224 &7214629532033358222 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8567467450457331947, guid: 0aca544e9460bda46a6e0d745dd9d581,
+    type: 3}
+  m_PrefabInstance: {fileID: 1367476996717609317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6219930302907907242 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8567467450457331947, guid: 0aca544e9460bda46a6e0d745dd9d581,
+    type: 3}
+  m_PrefabInstance: {fileID: 2356618349107504193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383747931440618436
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,12 +262,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!224 &7214629532033358222 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8567467450457331947, guid: 0aca544e9460bda46a6e0d745dd9d581,
-    type: 3}
-  m_PrefabInstance: {fileID: 1367476996717609317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6935693131458393655
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,12 +507,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
---- !u!224 &6219930302907907242 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8567467450457331947, guid: 0aca544e9460bda46a6e0d745dd9d581,
-    type: 3}
-  m_PrefabInstance: {fileID: 2356618349107504193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9182606577483092433
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,22 +704,22 @@ PrefabInstance:
     - target: {fileID: 7477870028475109814, guid: 0aca544e9460bda46a6e0d745dd9d581,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 215.45001
+      value: 216.95001
       objectReference: {fileID: 0}
     - target: {fileID: 7477870028475109814, guid: 0aca544e9460bda46a6e0d745dd9d581,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 92.3
+      value: 105.3
       objectReference: {fileID: 0}
     - target: {fileID: 2659229340633290863, guid: 0aca544e9460bda46a6e0d745dd9d581,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92.65
+      value: 86.15
       objectReference: {fileID: 0}
     - target: {fileID: 2659229340633290863, guid: 0aca544e9460bda46a6e0d745dd9d581,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 153.3
+      value: 156.3
       objectReference: {fileID: 0}
     - target: {fileID: 3774635080533035904, guid: 0aca544e9460bda46a6e0d745dd9d581,
         type: 3}
@@ -843,6 +843,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Row
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659229340633290863, guid: 0aca544e9460bda46a6e0d745dd9d581,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 76.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659229340633290863, guid: 0aca544e9460bda46a6e0d745dd9d581,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 137.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477870028475109814, guid: 0aca544e9460bda46a6e0d745dd9d581,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 207.45001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477870028475109814, guid: 0aca544e9460bda46a6e0d745dd9d581,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 124.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aca544e9460bda46a6e0d745dd9d581, type: 3}
