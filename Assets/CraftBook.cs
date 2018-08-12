@@ -31,6 +31,7 @@ public class CraftBook : MonoBehaviour {
 
         RecipeRow recipeRow = go.GetComponent<RecipeRow>();
         recipeRow.SetItems(inputA, inputB, output);
+        recipeRow.transform.localScale = Vector3.one;
     }
 
     void OnPimPickedUpItemEvent(Pim pim, Item item) {

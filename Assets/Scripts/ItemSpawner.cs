@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour {
 
     public PickupPoint[] pickupPoints;
     public Level[] levels;
+    public ItemType[] itemTypes;
 
     [Header("Gizmos")]
     public Sprite icon;
@@ -30,7 +31,7 @@ public class ItemSpawner : MonoBehaviour {
 	}
 
     GameObject SpawnItem() {
-
+        /*
         currentItemIndex++;
 
         if (currentLevelIndex >= levels.Length) {
@@ -41,11 +42,12 @@ public class ItemSpawner : MonoBehaviour {
             Debug.LogWarning("Can't spawn item index (" + currentItemIndex + ") for level " + currentLevelIndex + ". Doesn't exist!");
             return null;
         }
-
+        */
         GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity);
         Item item = itemInstance.GetComponent<Item>();
         if (item) {
-            ItemType itemType = levels[currentLevelIndex].itemTypesToSpawn[currentItemIndex];
+            //ItemType itemType = levels[currentLevelIndex].itemTypesToSpawn[currentItemIndex];
+            ItemType itemType = itemTypes[Random.Range(0, itemTypes.Length)];
 
             item.SetItemType(itemType);
             StartCoroutine(SlideItemToPickupPoint(itemInstance, 0));

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Biomatter
   m_EditorClassIdentifier: 
   itemName: Biomatter
-  sprite: {fileID: 21300008, guid: 4c7d3d573722c09429e545217e7a8f7c, type: 3}
+  sprite: {fileID: 21300008, guid: 876a9acfb8ca9114fbb228f0e59ac5e1, type: 3}
   value: 1

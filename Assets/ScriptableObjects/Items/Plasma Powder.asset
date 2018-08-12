@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Plasma Powder
   m_EditorClassIdentifier: 
   itemName: Plasma Powder
-  sprite: {fileID: 21300012, guid: bf43cf80a507b304aa3269353876233f, type: 3}
+  sprite: {fileID: 21300012, guid: 876a9acfb8ca9114fbb228f0e59ac5e1, type: 3}
   value: 4
