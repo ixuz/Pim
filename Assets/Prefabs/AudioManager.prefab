@@ -152,7 +152,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a8ddd0b30ca8c2f4c8f17957f6645f55, type: 3}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
     audioSource: {fileID: 0}
   initialBgm: Excite
 --- !u!82 &2939107127152678882
