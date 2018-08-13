@@ -18,7 +18,7 @@ public class StatsBook : MonoBehaviour {
         gameover = false;
         levelTimer = Game.instance.GetLevelData(0).startTimer;
         timerValue.text = "12345";
-        scoreValue.text = "0";
+        scoreValue.text = "Score " + 0 + "/" + Game.instance.GetLevelData(Game.instance.GetLevel()).targetScore.ToString();
         targetScoreValue.text = "Score " + "1/1";
         levelText.text = "Level 1";
     }

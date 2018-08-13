@@ -78,6 +78,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &564986470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3303769705610984490, guid: fd0f198d779cd1a4683217672fcdf669,
+    type: 3}
+  m_PrefabInstance: {fileID: 3303769705661927804}
+  m_PrefabAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b8806bfc2edfe784ca28836e06fa6b13, type: 3}
 --- !u!1 &294576190
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,13 +788,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 826662279}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &564986470 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3303769705610984490, guid: fd0f198d779cd1a4683217672fcdf669,
-    type: 3}
-  m_PrefabInstance: {fileID: 3303769705661927804}
-  m_PrefabAsset: {fileID: 0}
-  m_Script: {fileID: 11500000, guid: b8806bfc2edfe784ca28836e06fa6b13, type: 3}
 --- !u!1 &1488240201
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,12 +6393,12 @@ PrefabInstance:
     - target: {fileID: 5405547077871134240, guid: 4742d31acd094fb418ae313cb9acacc3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -140
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 5405547077323380774, guid: 4742d31acd094fb418ae313cb9acacc3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232
+      value: -312
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4742d31acd094fb418ae313cb9acacc3, type: 3}
