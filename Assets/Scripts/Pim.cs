@@ -191,12 +191,18 @@ public class Pim : MonoBehaviour {
 
     void OnPickupPointRecievedItemEvent(PickupPoint pickupPoint, Item item) {
 
+        List<GameObject> destroyTheseObjects = new List<GameObject>();
+
         bool isAlreadyCached = false;
         foreach (GameObject highlightedObject in highlightEffectCache) {
-            if (highlightedObject.transform.parent) {
-                if (highlightedObject.transform.parent.gameObject == item.gameObject) {
-                    isAlreadyCached = true;
-                    break;
+            if (highlightedObject == null) {
+                destroyTheseObjects.Add(highlightedObject);
+            } else {
+                if (highlightedObject.transform.parent) {
+                    if (highlightedObject.transform.parent.gameObject == item.gameObject) {
+                        isAlreadyCached = true;
+                        break;
+                    }
                 }
             }
         }
@@ -211,12 +217,16 @@ public class Pim : MonoBehaviour {
                 Recipes.Recipe foundRecipe = recipes.GetRecipe(item.itemType, currentItemObj.itemType);
 
                 if (foundRecipe.output != null) {
-                    GameObject go = Instantiate(mergableEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
+                    GameObject go = Instantiate(mergableEffect, item.transform.position, Quaternion.identity);
                     highlightEffectCache.Add(go);
                     go.transform.SetParent(item.gameObject.transform);
                 }
             }
+        }
 
+        foreach (GameObject go in destroyTheseObjects) {
+            highlightEffectCache.Remove(go);
+            Destroy(go);
         }
     }
 
