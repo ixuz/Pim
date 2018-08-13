@@ -19,7 +19,7 @@ public class StatsBook : MonoBehaviour {
         levelTimer = Game.instance.GetLevelData(0).startTimer;
         timerValue.text = "12345";
         scoreValue.text = "0";
-        targetScoreValue.text = "99999";
+        targetScoreValue.text = "Score " + "1/1";
         levelText.text = "Level 1";
     }
 
@@ -52,16 +52,20 @@ public class StatsBook : MonoBehaviour {
     }
 
     void OnChangeScoreEvent(int amount, int newTotalScore) {
-        scoreValue.text = newTotalScore.ToString();
+        if (Game.instance.GetLevel() < Game.instance.GetLevelCount()) {
+            scoreValue.text = "Score " + newTotalScore + "/" + Game.instance.GetLevelData(Game.instance.GetLevel()).targetScore.ToString();
+        }
     }
 
     void OnClearScoreEvent(int newTotalScore) {
-        scoreValue.text = newTotalScore.ToString();
+        if (Game.instance.GetLevel() < Game.instance.GetLevelCount()) {
+            scoreValue.text = "Score " + newTotalScore + "/" + Game.instance.GetLevelData(Game.instance.GetLevel()).targetScore.ToString();
+        }
     }
 
     void OnNewLevelEvent(int levelIndex) {
         if (Game.instance.GetLevel() < Game.instance.GetLevelCount()) {
-            targetScoreValue.text = Game.instance.GetLevelData(levelIndex).targetScore.ToString();
+            scoreValue.text = "Score " + "0/" + Game.instance.GetLevelData(levelIndex).targetScore.ToString();
             levelText.text = "Level  " + (levelIndex + 1);
             levelTimer = Game.instance.GetLevelData(levelIndex).startTimer;
         }
