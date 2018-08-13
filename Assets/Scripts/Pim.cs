@@ -172,7 +172,7 @@ public class Pim : MonoBehaviour {
         if (pickupPoint == null) return false;
         if (pickupPoint.GetItem()) return false;
 
-        if (pickupPoint.AddItem(currentItem)) {
+        if (pickupPoint.AddItem(currentItem, false)) {
             currentItem.GetComponent<SpriteRenderer>().sortingOrder = itemSortingOrderCache;
             OnPimDroppedItemEvent(this, currentItem.GetComponent<Item>());
             currentItem = null;

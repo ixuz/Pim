@@ -54,7 +54,7 @@ public class ItemSpawner : MonoBehaviour {
                 ItemType itemType = selectFromTypes[Random.Range(0, selectFromTypes.Length)];
 
                 item.SetItemType(itemType);
-                StartCoroutine(SlideItemToPickupPoint(itemInstance, 0));
+                StartCoroutine(SlideItemToPickupPoint(itemInstance, 0, false));
             }
 
             if (pickupPoints.Length == 0) {
@@ -98,7 +98,7 @@ public class ItemSpawner : MonoBehaviour {
         }
     }
 
-    IEnumerator SlideItemToPickupPoint(GameObject item, int pickupPointIndex) {
+    IEnumerator SlideItemToPickupPoint(GameObject item, int pickupPointIndex, bool forceIgnoreDropEffect) {
         while (true) {
             if (item == null) {
                 break;
@@ -109,8 +109,7 @@ public class ItemSpawner : MonoBehaviour {
 
             if (item.transform.position.x >= pickupPoint.transform.position.x) {
                 // The current Item have reached the first pickupPoint!
-
-                pickupPoint.AddItem(item);
+                pickupPoint.AddItem(item, forceIgnoreDropEffect);
 
                 item = null;
                 AudioManager.instance.PlaySfx("Blip_Select17");
@@ -121,7 +120,7 @@ public class ItemSpawner : MonoBehaviour {
                     if (pickupPoint.GetItem() != null) {
 
                         int nextPickupPointIndex = pickupPointIndex+1;
-                        StartCoroutine(SlideItemToPickupPoint(pickupPoint.GetItem(), nextPickupPointIndex));
+                        StartCoroutine(SlideItemToPickupPoint(pickupPoint.GetItem(), nextPickupPointIndex, pickupPoint.forceIgnoreDropEffectOnNextPickupPoint));
 
                         pickupPoint.RemoveItem();
                     }

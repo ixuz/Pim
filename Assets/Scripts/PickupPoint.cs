@@ -12,6 +12,7 @@ public class PickupPoint : MonoBehaviour {
     public bool canDropHere = true;
     public bool isOutput = false;
     public Transform outputPosition;
+    public bool forceIgnoreDropEffectOnNextPickupPoint = false;
 
     public GameObject dropEffect;
 
@@ -26,7 +27,7 @@ public class PickupPoint : MonoBehaviour {
     public static event PickupPointRecievedItemEvent OnPickupPointRecievedItemEvent;
     public delegate void PickupPointRecievedItemEvent(PickupPoint pickupPoint, Item item);
 
-    public bool AddItem(GameObject itemObj) {
+    public bool AddItem(GameObject itemObj, bool forceIgnoreDropEffect) {
 
         if (itemObj == null) return false;
         if (GetItem() != null) return false;
@@ -39,7 +40,7 @@ public class PickupPoint : MonoBehaviour {
         Item item = itemObj.GetComponent<Item>();
         OnPickupPointRecievedItemEvent(this, item);
 
-        if (dropEffect) {
+        if (dropEffect && !forceIgnoreDropEffect) {
             GameObject dropEffectInstance = Instantiate(dropEffect, itemObj.transform.position, Quaternion.identity);
             dropEffectInstance.transform.SetParent(itemObj.transform);
         }
