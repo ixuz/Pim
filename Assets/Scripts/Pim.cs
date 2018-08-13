@@ -13,6 +13,8 @@ public class Pim : MonoBehaviour {
     public GameObject highlightEffect;
     public GameObject mergableEffect;
     private List<GameObject> highlightEffectCache = new List<GameObject>();
+    public GameObject successfulMergeEffect;
+    public GameObject blackMatterMergeEffect;
 
     public float movementSmoothing = 1.0f;
 
@@ -77,7 +79,23 @@ public class Pim : MonoBehaviour {
                                         Destroy(currentItem);
                                         currentItem = null;
                                         PickupItem(pickupPoint);
-                                        AudioManager.instance.PlaySfx("Blip_Select10");
+
+
+                                        if (currentItem) {
+                                            Item mergedItem = currentItem.GetComponent<Item>();
+                                            if (mergedItem) {
+                                                if (mergedItem.itemType.name == "Black Matter") {
+                                                    GameObject go = Instantiate(blackMatterMergeEffect, transform.position, Quaternion.identity);
+                                                    go.transform.SetParent(transform);
+                                                    AudioManager.instance.PlaySfx("Blip_Select10");
+                                                } else {
+                                                    GameObject go = Instantiate(successfulMergeEffect, transform.position, Quaternion.identity);
+                                                    go.transform.SetParent(transform);
+                                                    AudioManager.instance.PlaySfx("Blip_Select10");
+                                                }
+                                            }
+                                        }
+
                                     }
                                 }
                             }

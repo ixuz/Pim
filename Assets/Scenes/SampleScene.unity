@@ -24834,6 +24834,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4659710236177239809, guid: 1b35d56c33f0a7f458ccc6a116769080,
         type: 3}
+    - target: {fileID: 4564520540551327002, guid: d64914bd04c987b4c969ee25ea4d26b5,
+        type: 3}
+      propertyPath: successfulMergeEffect
+      value: 
+      objectReference: {fileID: 1004043250700825969, guid: 5ae817f743d50634e81be839f68c33c1,
+        type: 3}
+    - target: {fileID: 4564520540551327002, guid: d64914bd04c987b4c969ee25ea4d26b5,
+        type: 3}
+      propertyPath: blackMatterMergeEffect
+      value: 
+      objectReference: {fileID: 3316174757511015784, guid: 71b3ae4156e2d1646bae7ee329f6e11e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64914bd04c987b4c969ee25ea4d26b5, type: 3}
 --- !u!1001 &4603120009400580176
