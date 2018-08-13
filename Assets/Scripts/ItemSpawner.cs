@@ -23,7 +23,6 @@ public class ItemSpawner : MonoBehaviour {
     void Update () {
         if (spawnCooldown < 0) {
             if (Game.instance.GetLevel() < Game.instance.GetLevelCount()) {
-                Debug.Log("Current spawn rate: " + Game.instance.GetCurrentLevelData().itemSpawnRate);
                 spawnCooldown = 1 / Game.instance.GetCurrentLevelData().itemSpawnRate;
 
                 GameObject itemObj = SpawnItem();
