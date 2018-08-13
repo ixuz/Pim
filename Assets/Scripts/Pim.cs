@@ -87,7 +87,7 @@ public class Pim : MonoBehaviour {
                                                 if (mergedItem.itemType.name == "Black Matter") {
                                                     GameObject go = Instantiate(blackMatterMergeEffect, transform.position, Quaternion.identity);
                                                     go.transform.SetParent(transform);
-                                                    AudioManager.instance.PlaySfx("Blip_Select10");
+                                                    AudioManager.instance.PlaySfx("BlackMattert");
                                                 } else {
                                                     GameObject go = Instantiate(successfulMergeEffect, transform.position, Quaternion.identity);
                                                     go.transform.SetParent(transform);
@@ -114,7 +114,6 @@ public class Pim : MonoBehaviour {
     }
 
     void HighlightInteractableTiles(Pim pim, Item item) {
-        Debug.Log("Highlight interactable tiles");
 
         List<GameObject> gos = GameObject.FindGameObjectsWithTag("PickupPoint").ToList<GameObject>();
         List<PickupPoint> pickupPoints = new List<PickupPoint>();

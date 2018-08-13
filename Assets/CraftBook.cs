@@ -35,7 +35,6 @@ public class CraftBook : MonoBehaviour {
     }
 
     void OnPimPickedUpItemEvent(Pim pim, Item item) {
-        Debug.Log("Refresh CraftBook");
 
         foreach (Transform child in transform) {
             Destroy(child.gameObject);

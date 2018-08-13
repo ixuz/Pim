@@ -65,13 +65,11 @@ public class PickupPoint : MonoBehaviour {
 
             Recipes.Recipe recipe = recipes.GetRecipe(itemTypeA, itemTypeB);
             if (recipe.output != null) {
-                Debug.Log("This is a valid recipe! Output: " + recipe.output);
 
                 GetItem().GetComponent<Item>().SetItemType(recipe.output);
 
                 return true;
             } else {
-                Debug.Log("This is not a valid recipe! Output: " + recipe.output);
                 return false;
             }
         }
@@ -112,7 +110,6 @@ public class PickupPoint : MonoBehaviour {
 
             if (go.transform.position.x >= position.x) {
                 // The current Item have reached the first pickupPoint!
-                Debug.Log("Output sent!");
                 Item.TriggerItemReachedOutputEvent(item, item.itemType);
                 Destroy(go);
 
