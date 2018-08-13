@@ -13,6 +13,8 @@ public class PickupPoint : MonoBehaviour {
     public bool isOutput = false;
     public Transform outputPosition;
 
+    public GameObject dropEffect;
+
     [Header("Gizmos")]
     public Sprite unoccupiedIcon;
     public Sprite occupiedIcon;
@@ -36,6 +38,11 @@ public class PickupPoint : MonoBehaviour {
 
         Item item = itemObj.GetComponent<Item>();
         OnPickupPointRecievedItemEvent(this, item);
+
+        if (dropEffect) {
+            GameObject dropEffectInstance = Instantiate(dropEffect, itemObj.transform.position, Quaternion.identity);
+            dropEffectInstance.transform.SetParent(itemObj.transform);
+        }
 
         if (isOutput) {
             RemoveItem();

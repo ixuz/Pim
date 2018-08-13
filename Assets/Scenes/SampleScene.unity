@@ -23618,6 +23618,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3206068400849275696, guid: 8ced8e9d077c0cd4099b53fcdc6aba80,
+        type: 3}
+      propertyPath: dropEffect
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ced8e9d077c0cd4099b53fcdc6aba80, type: 3}
 --- !u!1001 &734284810
@@ -23798,6 +23803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206068400849275696, guid: 8ced8e9d077c0cd4099b53fcdc6aba80,
+        type: 3}
+      propertyPath: dropEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ced8e9d077c0cd4099b53fcdc6aba80, type: 3}
@@ -24261,6 +24271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206068400849275696, guid: 8ced8e9d077c0cd4099b53fcdc6aba80,
+        type: 3}
+      propertyPath: dropEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ced8e9d077c0cd4099b53fcdc6aba80, type: 3}

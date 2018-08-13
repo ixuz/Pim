@@ -71,5 +71,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupItemInstance: {fileID: 0}
+  itemOffset: {x: 0, y: 0, z: 0}
+  canPickupHere: 1
+  canDropHere: 1
+  isOutput: 0
+  outputPosition: {fileID: 0}
+  dropEffect: {fileID: 3578489730281345212, guid: bfd65579cbee9d9408f0f9b283f19ab8,
+    type: 3}
   unoccupiedIcon: {fileID: 21300000, guid: 7829708891234dd4b8479dadc4139b85, type: 3}
   occupiedIcon: {fileID: 21300000, guid: 3359a91292ec0b64db2846a5f40da2c9, type: 3}
