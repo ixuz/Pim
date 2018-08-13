@@ -20,19 +20,26 @@ public class PickupPoint : MonoBehaviour {
     public bool CanPickupHere() { return canPickupHere; }
     public bool CanDropHere() { return canDropHere; }
 
-    public bool AddItem(GameObject item) {
+    // Event declaration
+    public static event PickupPointRecievedItemEvent OnPickupPointRecievedItemEvent;
+    public delegate void PickupPointRecievedItemEvent(PickupPoint pickupPoint, Item item);
 
-        if (item == null) return false;
+    public bool AddItem(GameObject itemObj) {
+
+        if (itemObj == null) return false;
         if (GetItem() != null) return false;
 
-        item.transform.SetParent(transform);
-        item.transform.SetPositionAndRotation(transform.position + itemOffset, Quaternion.identity);
-        item.transform.localScale = Vector3.one;
-        pickupItemInstance = item;
+        itemObj.transform.SetParent(transform);
+        itemObj.transform.SetPositionAndRotation(transform.position + itemOffset, Quaternion.identity);
+        itemObj.transform.localScale = Vector3.one;
+        pickupItemInstance = itemObj;
+
+        Item item = itemObj.GetComponent<Item>();
+        OnPickupPointRecievedItemEvent(this, item);
 
         if (isOutput) {
             RemoveItem();
-            StartCoroutine(SlideToPosition(item, outputPosition.position));
+            StartCoroutine(SlideToPosition(itemObj, outputPosition.position));
         }
 
         return true;

@@ -126,7 +126,7 @@ public class Pim : MonoBehaviour {
                                 if (foundRecipe.output != null) {
                                     GameObject go = Instantiate(mergableEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
                                     highlightEffectCache.Add(go);
-                                go.transform.SetParent(itemObject.transform);
+                                    go.transform.SetParent(itemObject.transform);
                                 }
                             }
                         }
@@ -189,13 +189,46 @@ public class Pim : MonoBehaviour {
         return (go.transform.position - transform.position).magnitude;
     }
 
+    void OnPickupPointRecievedItemEvent(PickupPoint pickupPoint, Item item) {
+
+        bool isAlreadyCached = false;
+        foreach (GameObject highlightedObject in highlightEffectCache) {
+            if (highlightedObject.transform.parent) {
+                if (highlightedObject.transform.parent.gameObject == item.gameObject) {
+                    isAlreadyCached = true;
+                    break;
+                }
+            }
+        }
+
+        if (!isAlreadyCached) {
+
+            if (currentItem != null) {
+
+                GameObject recipesObj = GameObject.FindGameObjectWithTag("Recipes");
+                Recipes recipes = recipesObj.GetComponent<Recipes>();
+                Item currentItemObj = currentItem.GetComponent<Item>();
+                Recipes.Recipe foundRecipe = recipes.GetRecipe(item.itemType, currentItemObj.itemType);
+
+                if (foundRecipe.output != null) {
+                    GameObject go = Instantiate(mergableEffect, pickupPoint.gameObject.transform.position, Quaternion.identity);
+                    highlightEffectCache.Add(go);
+                    go.transform.SetParent(item.gameObject.transform);
+                }
+            }
+
+        }
+    }
+
     void OnEnable() {
         OnPimPickedUpItemEvent += HighlightInteractableTiles;
         OnPimDroppedItemEvent += ClearAllHighlightedTiles;
+        PickupPoint.OnPickupPointRecievedItemEvent += OnPickupPointRecievedItemEvent;
     }
 
     void OnDisable() {
         OnPimPickedUpItemEvent -= HighlightInteractableTiles;
         OnPimDroppedItemEvent -= ClearAllHighlightedTiles;
+        PickupPoint.OnPickupPointRecievedItemEvent -= OnPickupPointRecievedItemEvent;
     }
 }
